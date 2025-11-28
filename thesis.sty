@@ -1,0 +1,184 @@
+\RequirePackage{etoolbox}
+\RequirePackage[font=small,compatibility=false]{caption}
+\RequirePackage[font=footnotesize,skip=3pt,subrefformat=parens]{subcaption}
+
+\newtoggle{englishmode}
+\togglefalse{englishmode}
+\DeclareOption{english}{\toggletrue{englishmode}}
+\ProcessOptions\relax
+
+
+\iftoggle{englishmode}{
+  \def \chapapp #1{Chapter #1: }
+}{
+  \def \chapapp #1{第#1章 ：}
+}
+
+%------------目次深さ-----------
+\setcounter{tocdepth}{2}
+
+%------------name変更------------
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table}
+\iftoggle{englishmode}{
+  \renewcommand{\bibname}{References}
+}{
+  \renewcommand{\bibname}{参考文献}
+}
+
+\def \figref  #1{\figurename\ref{#1}}
+\def \tabref  #1{\tablename\ref{#1}}
+\iftoggle{englishmode}{
+  \def \equref  #1{Eq.(\ref{#1})}
+}{
+  \def \equref  #1{式(\ref{#1})}
+}
+
+
+
+%---------------------------------
+\RequirePackage{xspace}
+
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+
+\def\eg{\emph{e.g}\onedot} \def\Eg{\emph{E.g}\onedot}
+\def\ie{\emph{i.e}\onedot} \def\Ie{\emph{I.e}\onedot}
+\def\cf{\emph{cf}\onedot} \def\Cf{\emph{Cf}\onedot}
+\def\etc{\emph{etc}\onedot} \def\vs{\emph{vs}\onedot}
+\def\wrt{w.r.t\onedot} \def\dof{d.o.f\onedot}
+\def\iid{i.i.d\onedot} \def\wolog{w.l.o.g\onedot}
+\def\etal{\emph{et al}\onedot}
+
+
+\AtEndPreamble{
+  \usepackage[capitalize]{cleveref}
+  \Crefname{table}{Table}{Tables}
+  \crefname{table}{Tab.}{Tabs.}
+  \iftoggle{englishmode}{
+    \crefname{section}{Sec.}{Secs.}
+    \Crefname{section}{Section}{Sections}
+  }{
+    \crefname{equation}{式}{式}
+    \Crefname{equation}{式}{式}
+    \crefformat{chapter}{第#2#1#3章}
+    \crefformat{section}{#2#1#3節}
+    \crefformat{subsection}{#2#1#3項}
+    \crefname{appendix}{付録}{付録}
+  }
+}
+
+%---------------------------------
+
+
+\def\thesis#1{
+  \gdef\@thesis{#1}
+}
+\def\teacher#1{
+  \gdef\@teacher{#1}
+}
+\def\organization#1{
+  \gdef\@organization{#1}
+}
+
+\renewcommand{\maketitle}{%
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{2cm}
+    \LARGE \@thesis \hspace*{\fill}\\
+    \vspace{2cm}
+    \LARGE
+    {\bf \@title} \hspace*{\fill}\\
+    \label{front_title}
+    \Large
+    \vspace{5cm}
+    \iftoggle{englishmode}{
+      \@date \hspace*{\fill}\\
+    }{
+      \@date \hspace*{0.5\zw}提出 \hspace*{\fill}\\
+    }
+    \vspace{1cm}
+    \iftoggle{englishmode}{
+      Supervised by \@teacher \hspace*{\fill}\\
+    }{
+      指導教員 \@teacher \hspace*{\fill}\\
+    }
+    \vspace{1cm}
+    \Large
+    \@organization \hspace*{\fill}\\
+    \LARGE
+    \@author \hspace*{\fill}\\
+    \normalsize
+  \end{center}
+  \clearpage
+}
+
+\newcommand{\backtitle}{%
+  \clearpage
+  \ifodd \count0
+    \mbox{}
+    \thispagestyle{empty}
+    \clearpage
+  \else
+  \fi
+  \thispagestyle{empty}
+  \Large
+  \vspace{2cm}
+  以上
+  \begin{center}
+    \vspace{4cm}
+    \large
+    \pageref{front_title}~p 〜 \pageref{back_title}~p 完\hspace*{\fill}\\
+    \vspace{1cm}
+    \@thesis \hspace*{\fill}\\
+    \vspace{1cm}
+    \@date 提出\hspace*{\fill}\\
+    \vspace{5cm}
+    \Large
+    \@organization \hspace*{\fill}\\
+    \@author \hspace*{\fill}\\
+    \label{back_title}
+    \normalsize
+  \end{center}
+}
+
+\newcommand\acknowledge{%
+  \clearpage
+  \iftoggle{englishmode}{
+    \addcontentsline{toc}{chapter}{Acknowledgements}
+    \chapter*{Acknowledgements}
+  }{
+    \addcontentsline{toc}{chapter}{謝辞}
+    \chapter*{謝辞}
+  }
+}
+
+\newcommand{\bib}[1]{%
+  \bibliographystyle{unsrt}
+  \bibliography{#1}
+}
+
+\def\abstract{%
+  \iftoggle{englishmode}{
+    \chapter*{Abstract}
+  }{
+    \chapter*{概要}
+  }
+  \thispagestyle{empty}
+}
+
+% 本文は行長全角38文字とし，中央寄せ(両側余白幅が同じ)
+% 偶数ページの余白は奇数ページに対してミラー対称
+\iftoggle{englishmode}{
+  % \setlength{\textwidth}{36em}
+}{
+  \setlength{\textwidth}{38\zw}
+}
+\setlength{\oddsidemargin}{\paperwidth}
+\addtolength{\oddsidemargin}{-\textwidth}
+\addtolength{\oddsidemargin}{-2truein}
+\setlength{\oddsidemargin}{0.5\oddsidemargin}
+\setlength{\evensidemargin}{\paperwidth}
+\addtolength{\evensidemargin}{-\textwidth}
+\addtolength{\evensidemargin}{-\oddsidemargin}
+\addtolength{\evensidemargin}{-2truein}

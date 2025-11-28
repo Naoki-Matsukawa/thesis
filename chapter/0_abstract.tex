@@ -1,0 +1,32 @@
+\abstract
+
+
+近年、マルチロボット環境をはじめとする複数主体による協調的タスク遂行が求められる場面が増加しており、それに対応するための手法としてマルチエージェント強化学習（MARL: Multi-Agent Reinforcement Learning）が注目されている。
+MARLでは、全エージェントの観測情報を統合して意思決定を行う中央実行型（centralized execution）と、各エージェントが自らの局所観測に基づいて意思決定を行う分散実行型（decentralized execution）の二つの枠組みが存在する。
+中央実行型は、局所観測による不確実性を回避できるため高い性能を発揮する一方、実環境では通信制約やスケーラビリティの問題から適用が困難である。
+一方の分散実行型は、通信制約下でも動作可能であるが、局所観測に基づく意思決定のため、中央実行型と比べて性能が劣る傾向にある。
+本研究では、中央実行型モデルの性能を維持しつつ、分散実行型エージェントへ知識を転移するための方策蒸留手法を提案する。
+これにより、中央実行型の優れた協調戦略を、通信制約のある環境でも実行可能な分散方策として実現することを目的とする。
+
+
+% \[
+% L_{\text{total}}
+% = \alpha_{\mathrm{KL}}\, L_{\mathrm{KL}}
+% + \alpha_{\mathrm{RL}}\, L_{\mathrm{RL}}
+% \]
+% \[
+% L_{\mathrm{KL}} = D_{\mathrm{KL}}(\pi_{\text{teacher}} \parallel \pi_{\text{student}})
+% \]
+
+% \[
+% r_t
+% = \frac{\pi_S(a_t\mid s_t)}
+% {\pi_S^{\text{old}}(a_t\mid s_t)},\qquad
+% L_{\mathrm{RL}}
+% = -\,\frac{1}{N}\sum_{t=1}^{N}
+% \min\!\Bigl(
+% r_t A_t,\;
+% \operatorname{clip}(r_t,\,1-\epsilon,\,1+\epsilon)\,A_t
+% \Bigr)
+% \]
+

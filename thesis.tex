@@ -1,0 +1,79 @@
+% LuaLaTeX template
+%
+%%%%%%%%%%%%%%%%%%%% For English %%%%%%%%%%%%%%%%%%%%%
+% \documentclass[12pt,a4paper]{book}
+% \usepackage[english]{thesis}
+%%%%%%%%%%%%%%%%%%%% For Japanese %%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,a4paper]{ltjsbook}
+\usepackage{thesis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preamble}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ハイパーリンクを有効にする．
+\usepackage{luatex85} % LuaTeX 1.0以前のバージョンでは必要
+\usepackage{luatexja-fontspec} % LuaLaTeX での日本語処理のため
+
+\usepackage[unicode, bookmarks=true, setpagesize=false]{hyperref}
+\hypersetup{%
+  bookmarksopen=true, bookmarksnumbered=true, bookmarksopenlevel=1,%
+  colorlinks=true,%
+  linkcolor=black, citecolor=black, filecolor=black,%
+  menucolor=magenta, urlcolor=blue,%
+  pdftitle={}, pdfauthor={}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% title
+
+% \thesis{卒業論文}
+\thesis{卒業論文}
+
+\title{
+  \scalebox{1.0}{マルチエージェント強化学習における} \\
+  \scalebox{1.0}{分散実行型方策獲得のための蒸留に関する研究} \\
+  \scalebox{1.0}{修士論文のテンプレート}
+  \vspace{2ex}
+}
+\date{2025年12月19日}
+\teacher{原田達也 教授}
+\organization{東京大学 工学部 機械情報工学科}
+%\organization{東京大学大学院 情報理工学系研究科 知能機械情報学専攻}
+\author{03-240288 松川 直生}
+
+
+%% Cover and Abstract (no page number)
+\maketitle
+% \includepdf[offset=0.4cm 0.4cm]{chapter/title.pdf}
+% \includepdf[offset=-0.4cm -0.4cm]{chapter/abstract.pdf}
+\include{chapter/0_abstract}
+
+%% Front Matter
+%% (no chapter number, use roman figures for page number e.g. i, ii, iii, iv...)
+\frontmatter
+\tableofcontents
+\listoffigures
+\listoftables
+
+%% Main Matter
+%% (with chapter number, use arabic figures for page number e.g. 1, 2, 3...)
+\mainmatter
+\include{chapter/1_intro}
+\include{chapter/2_related_work}
+\include{chapter/X_acknowledgements}
+
+
+%% Appendix
+%% (use alphabet for chapter number e.g. A, B, C...)
+\appendix
+\include{chapter/Z_suppl}
+
+%% Back Matter
+%% (no chapter number)
+\backmatter
+% \include{chapter/acknowledgment}
+% \include{bibliography}
+\bib{main.bib}
+
+\end{document}

@@ -1,0 +1,84 @@
+# LaTeX Project .gitignore
+
+# General compilation files (ログ、補助ファイルなど)
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+
+# Bibliography files (BibTeX/BibLaTeX)
+*.bbl
+*.blg
+*.run.xml
+*-blx.bib
+
+# Output files (PDF, DVIなど)
+out/**
+!out/thesis.pdf
+# *.pdf
+# *.dvi
+# *.ps
+# *.xdv
+
+# Index files (makeindex/xindy)
+*.idx
+*.ind
+*.ilg
+
+# Package specific files
+# Beamer
+*.nav
+*.snm
+*.vrb
+
+# minted
+_minted*
+*.pyg
+
+# nomencl
+*.nlo
+*.nls
+*.ntn
+
+# glossaries
+*.acn
+*.acr
+*.alg
+*.glo
+*.glg
+*.gls
+*.glsdefs
+*.ist
+
+# Editor/Tool specific files (エディタやツールの設定ファイル)
+
+# VSCode
+.vscode/**
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# TeXstudio
+*.txsprofile
+
+# LaTeX Workshop (VSCode extension)
+# .latexmkrc
+
+# Arara (automation tool)
+*.log.bak
+
+# ----------------------------------------------------------------
+# Other
+# ----------------------------------------------------------------
+# Compressed files
+*.zip
+*.tar.gz
+
+# Backup files
+*~
+*.bak

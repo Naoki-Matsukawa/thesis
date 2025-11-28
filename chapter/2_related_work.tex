@@ -1,0 +1,68 @@
+\chapter{関連研究}
+\label{chap:related_work}
+
+
+\section{LaTeXについて}
+\label{sec:latex}
+
+\LaTeX にも色々あるらしいです．以前のテンプレートはpLaTeXを使っていましたが，今回はLuaLaTeXを使っています．
+LuaLaTeXを使うと日本語で書くことが出来ます．
+%-------------------------------------------------------------------------
+\section{お役立ち情報}
+\subsection{数式の書き方}
+
+\texttt{equation}環境を使うと数式を書くことができます．
+\begin{equation}
+  y = ax + b
+\end{equation}
+\texttt{\$}を使うとインライン数式$y=ax+b$を書くことができます．
+複数行の数式は\texttt{split}を使う
+ことができます．
+\begin{equation}
+  \begin{split}
+    y & = a ( x + b ) \\
+      & = ax + ab
+  \end{split}
+  \label{eq:equation1}
+\end{equation}
+
+\subsection{図の書き方}
+\texttt{figure}環境を使うと\cref{fig:figure}のように図を書くことができます．図を自分で作る場合はpdfで作成すると良いらしいです．
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{fig/cat_kotatsu_neko.pdf}
+  \caption{図にはPDF形式の画像を使ってください}
+  \label{fig:figure}
+\end{figure}
+
+\subsection{表の書き方}
+\texttt{table}環境を使うと\cref{tab:table}のように表を書くことができます．
+\begin{table}[h]
+  \centering
+  \begin{tabular}{@{}cccc@{}}
+    \toprule
+    method        & 評価指標その1 $\downarrow$ & その2   $\uparrow$ \\
+    \midrule
+    先行研究          & $100$                & $2$              \\
+    \textbf{ours} & $\mathbf{0.1}$       & $\mathbf{500}$   \\
+    \bottomrule
+  \end{tabular}
+  \caption{良い性能のものを太字にするとよいです}
+  \label{tab:table}
+\end{table}
+
+
+\subsection{参照の仕方}
+
+以前のテンプレートでは\texttt{\textbackslash figref}や\texttt{\textbackslash tabref}を使っていました．引き続きこれらを使うこともできますが，\texttt{\textbackslash cref}を使って参照する対象に関係なく一括で\cref{fig:figure}や\cref{tab:table}のように参照することができるようにしました．
+\begin{itemize}
+  \item \cref{chap:related_work}
+  \item \cref{sec:latex}
+  \item \cref{eq:equation1}
+  \item \cref{chap:suppl}
+\end{itemize}
+
+\subsection{参考文献の書き方}
+
+参考文献は\texttt{\textbackslash cite}を使って引用することができます\cite{bib1}．
+複数まとめて引用もできます\cite{bib1,bib2}．

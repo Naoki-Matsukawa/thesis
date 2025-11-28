@@ -1,0 +1,86 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 3000,
+  "editor.wordWrap": "on",
+  "editor.unicodeHighlight.allowedCharacters": {
+    "，": true,
+    "．": true,
+    "、": true,
+    "。": true,
+    "；": true,
+    "：": true,
+    "’": true,
+    "”": true
+  },
+  "latex-workshop.latex.outDir": "out",
+  "latex-workshop.latex.clean.method": "glob",
+  "latex-workshop.latex.option.maxPrintLine.enabled": false,
+  "latex-workshop.bibtex-fields.sort.enabled": true,
+  "latex-workshop.latex.clean.fileTypes": [
+    "%DOCFILE%.aux",
+    "%DOCFILE%.bbl",
+    "%DOCFILE%.blg",
+    "%DOCFILE%.idx",
+    "%DOCFILE%.ind",
+    "%DOCFILE%.lof",
+    "%DOCFILE%.lot",
+    "%DOCFILE%.out",
+    "%DOCFILE%.toc",
+    "%DOCFILE%.acn",
+    "%DOCFILE%.acr",
+    "%DOCFILE%.alg",
+    "%DOCFILE%.glg",
+    "%DOCFILE%.glo",
+    "%DOCFILE%.gls",
+    "%DOCFILE%.fls",
+    "%DOCFILE%.log",
+    "%DOCFILE%.fdb_latexmk",
+    "%DOCFILE%.snm",
+    "%DOCFILE%.synctex(busy)",
+    "%DOCFILE%.synctex.gz(busy)",
+    "%DOCFILE%.nav",
+    "%DOCFILE%.vrb",
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+<<<<<<< HEAD
+      "tools": ["latexmk"]
+=======
+      "tools": [
+        "latexmk"
+      ]
+>>>>>>> 16f98b8 (0_abstract)
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-silent",
+        "-outdir=%OUTDIR%",
+        "-lualatex",
+        "-synctex=1",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "[tex]": {
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.tabSize": 2
+  },
+  "[latex]": {
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.tabSize": 2
+  },
+  "[bibtex]": {
+    "editor.tabSize": 2
+  },
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 16f98b8 (0_abstract)
